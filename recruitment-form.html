@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruitment Form</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #6c63ff;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            margin: 0 0 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .question label {
+            display: block;
+            margin: 5px 0;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .submit-btn {
+            background-color: #6c63ff;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 30px auto 0;
+            text-align: center;
+        }
+
+        .submit-btn:hover {
+            background-color: #5b55d8;
+        }
+
+        #result {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #6c63ff;
+            color: white;
+            padding: 15px 10px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>Recruitment Form</h1>
+            <p>Please complete the form carefully and submit.</p>
+        </div>
+        <div class="content">
+            <form id="recruitment-form">
+                <h2>Administrative Questions</h2>
+                <div class="question">
+                    <p>1. Can you commit to working full-time, 8 hours a day, 5 days a week?</p>
+                    <label><input type="radio" name="admin1" value="yes"> Yes</label>
+                    <label><input type="radio" name="admin1" value="no"> No</label>
+                </div>
+                <div class="question">
+                    <p>2. Are you available to start work immediately? If not, how soon do you need to start?</p>
+                    <select name="admin2">
+                        <option value="">-- Select --</option>
+                        <option value="immediately">Immediately</option>
+                        <option value="1 week">1 Week</option>
+                        <option value="2 weeks">2 Weeks</option>
+                        <option value="more">More</option>
+                    </select>
+                </div>
+                <div class="question">
+                    <p>3. Do you have any current commitments that would impact your ability to commit to full-time work? If yes, please explain.</p>
+                    <label><input type="radio" name="admin3" value="no"> No</label>
+                    <label><input type="radio" name="admin3" value="yes"> Yes</label>
+                    <textarea name="admin3_explain" placeholder="If yes, please explain..."></textarea>
+                </div>
+                <div class="question">
+                    <p>4. Have you ever worked in a position that required full-time Android app development? If yes, what was your experience?</p>
+                    <label><input type="radio" name="admin4" value="no"> No</label>
+                    <label><input type="radio" name="admin4" value="yes"> Yes</label>
+                    <textarea name="admin4_experience" placeholder="If yes, please explain..."></textarea>
+                </div>
+                <div class="question">
+                    <p>5. Do you have the ability to work on multiple projects simultaneously while meeting deadlines?</p>
+                    <label><input type="radio" name="admin5" value="yes"> Yes</label>
+                    <label><input type="radio" name="admin5" value="no"> No</label>
+                </div>
+                <div class="question">
+                    <p>6. Have you ever worked remotely or in a hybrid work environment? If yes, how was your experience managing your time and communicating with the team?</p>
+                    <label><input type="radio" name="admin6" value="no"> No</label>
+                    <label><input type="radio" name="admin6" value="yes"> Yes</label>
+                    <textarea name="admin6_experience" placeholder="If yes, please explain..."></textarea>
+                </div>
+                <div class="question">
+                    <p>7. Do you have a suitable home or office environment to support full-time Android app development?</p>
+                    <label><input type="radio" name="admin7" value="yes"> Yes</label>
+                    <label><input type="radio" name="admin7" value="no"> No</label>
+                    <textarea name="admin7_explain" placeholder="If yes, please explain..."></textarea>
+                </div>
+                <div class="question">
+                    <p>8. Have you ever used Android Studio or any other IDE to develop Android apps?</p>
+                    <label><input type="radio" name="admin8" value="no"> No</label>
+                    <label><input type="radio" name="admin8" value="yes"> Yes</label>
+                    <textarea name="admin8_tools" placeholder="If yes, please list the tools you typically use..."></textarea>
+                </div>
+                <div class="question">
+                    <p>9. Do you have experience using a version control system like Git in Android app development?</p>
+                    <label><input type="radio" name="admin9" value="no"> No</label>
+                    <label><input type="radio" name="admin9" value="yes"> Yes</label>
+                    <textarea name="admin9_experience" placeholder="If yes, please provide examples of how you use it..."></textarea>
+                </div>
+                <div class="question">
+                    <p>10. Are you able to work under pressure and meet deadlines while ensuring high quality in your app development?</p>
+                    <label><input type="radio" name="admin10" value="no"> No</label>
+                    <label><input type="radio" name="admin10" value="yes"> Yes</label>
+                    <textarea name="admin10_experience" placeholder="If yes, please provide an example of a previous experience..."></textarea>
+                </div>
+
+                <h2>Technical Questions</h2>
+                <div class="question">
+                    <p>1. What is the primary building block of a Flutter UI?</p>
+                    <label><input type="radio" name="tech1" value="A"> A) HTML</label>
+                    <label><input type="radio" name="tech1" value="B"> B) Widgets</label>
+                    <label><input type="radio" name="tech1" value="C"> C) XML</label>
+                    <label><input type="radio" name="tech1" value="D"> D) Activity</label>
+                </div>
+                <div class="question">
+                    <p>2. True or False: Flutter can only be used for mobile app development.</p>
+                    <label><input type="radio" name="tech2" value="true"> True</label>
+                    <label><input type="radio" name="tech2" value="false"> False</label>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="submitForm()">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="result"></div>
+
+    <footer>
+        <p>&copy; 2025 Recruitment Process | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your EmailJS user ID
+
+        function submitForm() {
+            const form = document.getElementById('recruitment-form');
+            const resultDiv = document.getElementById('result');
+
+            // Admin Questions Validation
+            const admin1 = form.admin1?.value;
+            const admin3 = form.admin3?.value;
+
+            if (admin1 === 'no' || admin3 === 'yes') {
+                resultDiv.textContent = "Thank you for your submission. Unfortunately, you did not pass the screening process.";
+                resultDiv.style.display = "block";
+                return;
+            }
+
+            // Technical Questions Validation
+            const correctAnswers = {
+                tech1: 'B',
+                tech2: 'false'
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+
+            for (let question in correctAnswers) {
+                const userAnswer = form[question]?.value;
+                if (userAnswer === correctAnswers[question]) {
+                    score += 1; // 1 point per question
+                }
+            }
+
+            const percentage = (score / totalQuestions) * 100;
+
+            resultDiv.style.display = "block";
+
+            if (percentage >= 70) {
+                resultDiv.textContent = `Thank you for your submission. Congratulations, you passed with a score of ${percentage}%. Check your email for the next steps.`;
+
+                // Send Email with Google Calendar Link
+                emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                    user_email: "candidate_email@example.com", // Replace with candidate's email field from the form
+                    calendar_link: "https://calendar.google.com/calendar/u/0/r" // Replace with your specific Google Calendar link
+                }).then(() => {
+                    alert("An email with the interview schedule link has been sent to your email.");
+                }).catch((error) => {
+                    console.error("Error sending email:", error);
+                    alert("Failed to send email. Please try again later.");
+                });
+            } else {
+                resultDiv.textContent = `Thank you for your submission. Unfortunately, you did not pass. Your score is ${percentage}%.`;
+            }
+        }
+    </script>
+</body>
+</html>
